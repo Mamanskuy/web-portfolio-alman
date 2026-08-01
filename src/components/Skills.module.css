@@ -1,0 +1,113 @@
+/* ---- Skills Tags ---- */
+.skillGroups {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3.5vw, 2.5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.groupName {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0.375rem 0.875rem;
+  transition: all var(--transition-base);
+  cursor: default;
+}
+
+.tag:hover {
+  border-color: var(--fg);
+  color: var(--fg);
+  background: var(--surface);
+}
+
+/* ---- Certifications Table ---- */
+.certLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+  margin-bottom: 0.875rem;
+}
+
+.certTable {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.certRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: clamp(1rem, 2vw, 2rem);
+  padding: 0.75rem clamp(1rem, 2vw, 1.25rem);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition-fast);
+  align-items: center;
+}
+
+.certRow:last-child {
+  border-bottom: none;
+}
+
+.certRow:hover {
+  background: var(--surface);
+}
+
+.certName {
+  font-size: 0.8125rem;
+  color: var(--fg);
+  font-weight: 400;
+}
+
+.certIssuer {
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  text-align: right;
+}
+
+.certYear {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--fg-muted);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .certRow {
+    grid-template-columns: 1fr auto;
+  }
+
+  .certIssuer {
+    display: none;
+  }
+}

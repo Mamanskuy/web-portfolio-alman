@@ -1,0 +1,74 @@
+/* ---- Contact Section ---- */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.headline {
+  font-family: var(--font-body);
+  font-size: clamp(1.75rem, 4.5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--fg);
+  max-width: 480px;
+}
+
+.headlineAccent {
+  color: var(--fg-muted);
+}
+
+.description {
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
+  color: var(--fg-muted);
+  line-height: 1.75;
+  max-width: 460px;
+}
+
+/* CTA links */
+.links {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg-secondary);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-base);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.link:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+  background: var(--surface);
+}
+
+.linkArrow {
+  font-size: 0.6875rem;
+  transition: transform var(--transition-fast);
+}
+
+.link:hover .linkArrow {
+  transform: translateX(2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .links {
+    flex-direction: column;
+  }
+
+  .link {
+    justify-content: center;
+  }
+}

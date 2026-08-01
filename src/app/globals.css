@@ -1,0 +1,193 @@
+/* ============================================
+   DESIGN SYSTEM — alman_ portfolio
+   Style: Editorial Minimalist (B&W)
+   Palette: Dominant Black with Gray shades
+   Typography: Outfit (body) + JetBrains Mono (mono)
+   ============================================ */
+
+:root {
+  --bg: #0A0A0A;
+  --bg-alt: #111111;
+  --surface: #181818;
+  --surface-hover: #222222;
+  --border: #2A2A2A;
+  --border-hover: #555555;
+
+  --fg: #F0F0F0;
+  --fg-secondary: #A0A0A0;
+  --fg-muted: #666666;
+
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-body: 'Outfit', 'Segoe UI', sans-serif;
+
+  --radius: 2px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 100px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --sidebar-width: 320px;
+  --content-max: 960px;
+  --gap: clamp(2rem, 4vw, 4rem);
+}
+
+/* ---- Reset & Base ---- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--fg);
+  line-height: 1.65;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* ---- Scrollbar ---- */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-muted);
+}
+
+/* ---- Split Screen Layout ---- */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4.5rem);
+  max-width: calc(100vw - var(--sidebar-width));
+}
+
+/* ---- Section ---- */
+
+.section {
+  margin-bottom: clamp(4.5rem, 9vw, 7rem);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--fg-muted);
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sectionLabel::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---- Scroll Reveal Animations ---- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.revealStagger > * {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.revealStagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+.revealStagger.visible > *:nth-child(2) { transition-delay: 0.06s; opacity: 1; transform: translateY(0); }
+.revealStagger.visible > *:nth-child(3) { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
+.revealStagger.visible > *:nth-child(4) { transition-delay: 0.18s; opacity: 1; transform: translateY(0); }
+.revealStagger.visible > *:nth-child(5) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+.revealStagger.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.revealStagger.visible > *:nth-child(7) { transition-delay: 0.36s; opacity: 1; transform: translateY(0); }
+.revealStagger.visible > *:nth-child(8) { transition-delay: 0.42s; opacity: 1; transform: translateY(0); }
+
+/* ---- Core Animations ---- */
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 900px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .mainContent {
+    margin-left: 0;
+    max-width: 100%;
+    padding: 2rem clamp(1.25rem, 5vw, 3rem);
+  }
+}

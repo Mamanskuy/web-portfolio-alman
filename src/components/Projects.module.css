@@ -1,0 +1,215 @@
+/* ---- Projects List (1-column accordion) ---- */
+.list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.item {
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition-base);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item:hover {
+  background: var(--surface);
+}
+
+.itemOpen {
+  background: var(--surface);
+}
+
+/* ---- Collapsed header (clickable row) ---- */
+.itemHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1rem, 2.5vw, 1.5rem);
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+
+.itemLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  transition: color var(--transition-base);
+}
+
+.item:hover .title {
+  color: var(--fg);
+}
+
+.summary {
+  font-size: 0.8125rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+.itemRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.year {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.toggle {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--fg-muted);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+}
+
+.item:hover .toggle {
+  border-color: var(--fg-muted);
+  color: var(--fg-secondary);
+}
+
+.toggleOpen {
+  background: var(--fg);
+  color: var(--bg) !important;
+  border-color: var(--fg) !important;
+}
+
+/* ---- Expanded detail panel ---- */
+.detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.detailOpen {
+  max-height: 800px;
+}
+
+.detailInner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0 clamp(1rem, 2.5vw, 1.5rem) clamp(1.25rem, 2.5vw, 1.75rem);
+  border-top: 1px solid var(--border);
+  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+/* Photo placeholder */
+.photoPlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-alt);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photoLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  letter-spacing: 0.04em;
+  opacity: 0.6;
+}
+
+/* Full description */
+.fullDescription {
+  font-size: 0.875rem;
+  color: var(--fg-secondary);
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+/* Stack */
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tech {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--fg-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+  transition: all var(--transition-fast);
+}
+
+.tech:hover {
+  color: var(--fg-secondary);
+  border-color: var(--fg-muted);
+}
+
+/* Links */
+.links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+  padding: 0.375rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-base);
+}
+
+.link:hover {
+  color: var(--fg);
+  border-color: var(--fg-muted);
+  background: var(--surface-hover);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .itemHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .itemRight {
+    align-self: flex-start;
+  }
+}
