@@ -1,4 +1,4 @@
-# 🌐 Web Portfolio — Alman
+# 🌐 Web Portfolio - Alman
 
 A personal portfolio website built to showcase my projects, skills, and experience as a developer. 
 
